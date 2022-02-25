@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   belongs_to :status
   belongs_to :burden
   belongs_to :prefecture
-  belongs_to :shipping_day_id
+  belongs_to :shipping_day
 
   with_options presence: true do
     validates :name
