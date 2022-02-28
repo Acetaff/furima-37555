@@ -93,6 +93,11 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is invalid")
       end
+      it 'priceは半角数字でなければ出品できない' do
+        @item.price = "３００"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is invalid")
+      end
       it 'userが紐づいていないと登録できない' do
         @item.user = nil
         @item.valid?
