@@ -128,7 +128,7 @@
     </div>
     <ul class='item-lists'>
 
-    <% unless @item == false %>
+    <% if @items.present? %>
       <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
       <li class='list'>
       <% @items.each do |item|%>
@@ -179,7 +179,7 @@
         </div>
         <% end %>
       </li>
-      <% end%>
+    <% end %>
       <%# //商品がある場合は表示されないようにしましょう %>
       <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
     </ul>
