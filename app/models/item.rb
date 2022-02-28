@@ -9,6 +9,7 @@ class Item < ApplicationRecord
   belongs_to :shipping_day
 
   with_options presence: true do
+    validates :image
     validates :name
     validates :description
   end
@@ -21,6 +22,6 @@ class Item < ApplicationRecord
     validates :shipping_day_id
   end
 
-  validates :price, presence: true, format: { with: /\A[300-9999999]+\z/, message: 'には(￥300〜￥9,999,999)までの"半角数字"を入力してください'}
+  validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is invalid"}
 
 end
