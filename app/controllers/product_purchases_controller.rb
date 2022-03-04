@@ -1,5 +1,6 @@
 class ProductPurchasesController < ApplicationController
   before_action :authenticate_user!
+  before_action :order_inspection
   
   def index
     @item = Item.find(params[:item_id])
@@ -31,6 +32,13 @@ class ProductPurchasesController < ApplicationController
       card: order_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def order_inspection
+    @item = Item.includes(:user)
+    if current_user.id == @item.user.id || @item.id == @item.product_purchase[:item_id]
+      redirect_to root_path
+    end
   end
   
 end
