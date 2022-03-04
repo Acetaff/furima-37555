@@ -11,6 +11,7 @@ class Order
     validates :product_purchase_id
     validates :user_id
     validates :item_id
+    validates :token
   end
 
   def save
