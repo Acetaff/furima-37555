@@ -1,15 +1,16 @@
 class ProductPurchasesController < ApplicationController
   before_action :authenticate_user!
-  before_action :order_inspection
   
   def index
     @item = Item.find(params[:item_id])
+    order_inspection
     @order = Order.new
   end
 
   def create
     @order = Order.new(order_params)
     @item = Item.find(params[:item_id])
+    order_inspection
     if @order.valid?
       pay_item
       @order.save
@@ -35,8 +36,7 @@ class ProductPurchasesController < ApplicationController
   end
 
   def order_inspection
-    @item = Item.includes(:user)
-    if current_user.id == @item.user.id || @item.id == @item.product_purchase[:item_id]
+    if current_user.id == @item.user.id
       redirect_to root_path
     end
   end
