@@ -9,6 +9,8 @@ class Order
     validates :address
     validates :phone_num, format: {with: /\A[0-9]{3}-[0-9]{4}-[0-9]{4}\z/, message: "is invalid. hyphen(-)"}
     validates :product_purchase_id
+    validates :user_id
+    validates :item_id
   end
 
   def save
