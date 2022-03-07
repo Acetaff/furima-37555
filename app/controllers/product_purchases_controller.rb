@@ -36,7 +36,7 @@ class ProductPurchasesController < ApplicationController
   end
 
   def order_inspection
-    if current_user.id == @item.user.id
+    if current_user.id == @item.user.id || @item.product_purchase.present?
       redirect_to root_path
     end
   end
