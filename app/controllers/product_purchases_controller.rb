@@ -1,17 +1,14 @@
 class ProductPurchasesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item
+  before_action :order_inspection
   
   def index
-    set_item
-    order_inspection
     @order = Order.new
   end
 
   def create
     @order = Order.new(order_params)
-    set_item
-    order_inspection
     if @order.valid?
       pay_item
       @order.save

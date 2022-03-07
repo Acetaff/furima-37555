@@ -1,6 +1,6 @@
 class Order
   include ActiveModel::Model
-  attr_accessor :post_code, :prefecture_id, :municipalities, :address, :building_name, :phone_num, :user_id, :item_id, :product_purchase_id, :token
+  attr_accessor :post_code, :prefecture_id, :municipalities, :address, :building_name, :phone_num, :user_id, :item_id, :token
 
   with_options presence: true do
     validates :user_id

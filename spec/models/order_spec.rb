@@ -96,6 +96,11 @@ RSpec.describe Order, type: :model do
         @order.valid?
         expect(@order.errors.full_messages).to include("Phone num には１０桁以上・11桁以内の半角数字を入力して下さい")
       end
+      it 'tokenが空では保存できない' do
+        @order.token = nil
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Token can't be blank")
+      end
     end
   end
 end
