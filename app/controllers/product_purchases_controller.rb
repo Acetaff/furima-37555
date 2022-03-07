@@ -1,15 +1,16 @@
 class ProductPurchasesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_item
   
   def index
-    @item = Item.find(params[:item_id])
+    set_item
     order_inspection
     @order = Order.new
   end
 
   def create
     @order = Order.new(order_params)
-    @item = Item.find(params[:item_id])
+    set_item
     order_inspection
     if @order.valid?
       pay_item
@@ -39,6 +40,10 @@ class ProductPurchasesController < ApplicationController
     if current_user.id == @item.user.id || @item.product_purchase.present?
       redirect_to root_path
     end
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
   
 end
