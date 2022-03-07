@@ -19,7 +19,9 @@ RSpec.describe Purchaser, type: :model do
 
     context '保存できない' do
       it 'post_codeが空では保存できない' do
-        
+        @purchaser.post_code = ''
+        @purchaser.valid?
+        expect(@purchaser.errors.full_messages).to include("Post code can't be blank")
       end
       it 'post_codeが全角数字では保存できない' do
         
