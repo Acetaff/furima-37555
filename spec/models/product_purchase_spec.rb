@@ -15,10 +15,14 @@ RSpec.describe ProductPurchase, type: :model do
 
     context '保存できない場合' do
       it 'user情報が紐づいていなければ保存できない' do
-        
+        @product_purchase.user = nil
+        @product_purchase.valid?
+        expect(@product_purchase.errors.full_messages).to include("User must exist")
       end
       it 'item情報が紐づいていなければ保存できない' do
-        
+        @product_purchase.item = nil
+        @product_purchase.valid?
+        expect(@product_purchase.errors.full_messages).to include("Item must exist")
       end
     end
   end
