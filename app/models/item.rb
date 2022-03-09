@@ -15,7 +15,7 @@ class Item < ApplicationRecord
     validates :description
   end
 
-  with_options presence: true, numericality: { other_than: 1 , message: "can't be blank"} do
+  with_options presence: true, numericality: { other_than: 1 , message: "を入力してください"} do
     validates :category_id
     validates :status_id
     validates :burden_id
@@ -23,6 +23,6 @@ class Item < ApplicationRecord
     validates :shipping_day_id
   end
 
-  validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is invalid"}
+  validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "が無効な値です。"}
 
 end

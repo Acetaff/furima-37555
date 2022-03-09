@@ -6,8 +6,8 @@ class Order
     validates :user_id
     validates :item_id
     validates :token
-    validates :post_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
-    validates :prefecture_id, numericality: { other_than: 1 , message: "can't be blank"}
+    validates :post_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "が無効です"}
+    validates :prefecture_id, numericality: { other_than: 1 , message: "を入力してください"}
     validates :municipalities
     validates :address
     validates :phone_num, format: {with: /\A[0-9]{10,11}\z/, message: "には１０桁以上・11桁以内の半角数字を入力して下さい"}
