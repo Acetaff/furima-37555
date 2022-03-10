@@ -81,22 +81,22 @@ RSpec.describe Item, type: :model do
       it 'priceが空では出品できない' do
         @item.price = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("価格を入力してください", "価格が無効な値です。")
+        expect(@item.errors.full_messages).to include("価格を入力してください", "価格が無効な値です")
       end
       it 'priceが３００円未満では出品できない' do
         @item.price = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("価格が無効な値です。")
+        expect(@item.errors.full_messages).to include("価格が無効な値です")
       end
       it 'priceが１０,０００,０００以上では出品できない' do
         @item.price = 10000000
         @item.valid?
-        expect(@item.errors.full_messages).to include("価格が無効な値です。")
+        expect(@item.errors.full_messages).to include("価格が無効な値です")
       end
       it 'priceは半角数字でなければ出品できない' do
         @item.price = "３００"
         @item.valid?
-        expect(@item.errors.full_messages).to include("価格が無効な値です。")
+        expect(@item.errors.full_messages).to include("価格が無効な値です")
       end
       it 'userが紐づいていないと登録できない' do
         @item.user = nil
